@@ -2,9 +2,11 @@ package Dilip.com.Jpa;
 
 import java.util.List;
 
+import org.hibernate.query.Page;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import Dilip.com.Jpa.Dao.PlayerRepo;
@@ -42,17 +44,31 @@ public class Application {
 		Athlete.forEach(Athletes -> {
 			System.out.println(Athletes);
 		});
-		System.out.println("*********************Sorting Method********************");
+		/*
+		 * System.out.println("*********************Sorting Method********************"
+		 * );
+		 * 
+		 * List<Athletes> ath = athlets.findAll(Sort.by("age").ascending()); //Default
+		 * Asecenting Order ath.forEach(Athletes ->{ System.out.println(Athletes); });
+		 * System.out.println("*********************Sorting By game********************"
+		 * );
+		 * 
+		 * List<Athletes> plyer= athlets.findAll(Sort.by("game" , "age").descending());
+		 * 
+		 * plyer.forEach(Athletes ->{ System.out.println(Athletes); });
+		 */
+		
 
-		List<Athletes> ath = athlets.findAll(Sort.by("age").ascending());  //Default Asecenting Order
-		ath.forEach(Athletes ->{
-			System.out.println(Athletes);
-		});
-		System.out.println("*********************Sorting By game********************");
-
-		List<Athletes> plyer= athlets.findAll(Sort.by("game" , "age").descending());
-	
-		plyer.forEach(Athletes ->{
+		int pageSize=2;
+		int pageNo=5;
+		PageRequest pageRequest=PageRequest.of(pageNo-1, pageSize);
+		
+		org.springframework.data.domain.
+		Page<Athletes> pageData=athlets.findAll(pageRequest);
+		int TotalPage= pageData.getTotalPages();
+		System.out.println(TotalPage);
+		
+		pageData.forEach(Athletes ->{
 			System.out.println(Athletes);
 		});
 	}
