@@ -17,11 +17,11 @@ public class Athletes {
 	
 	@Id
 	@Column (name = "athletes_id")
-	private int id;
+	private Integer id;
 	@Column (name = "athletes_names")
 	private String name;
 	@Column (name = "athletes_games")
 	private String game;
-	private int age;
+	private Integer age;
 	private String country;
 }
