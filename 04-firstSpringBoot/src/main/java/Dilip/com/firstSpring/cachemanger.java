@@ -1,0 +1,16 @@
+package Dilip.com.firstSpring;
+
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class cachemanger implements ApplicationRunner {
+	
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		System.out.println("Logic is excuting to cachemanger data is loading");
+		
+	}
+
+}
